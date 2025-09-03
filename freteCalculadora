@@ -1,0 +1,25 @@
+using System;
+using System.Globalization;
+
+class Program
+{
+    static void Main()
+    {
+        double peso, valorPorQuilo;
+
+        if (!double.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.InvariantCulture, out peso) || peso <= 0)
+        {
+            Console.WriteLine("Peso inválido. Insira um valor positivo.");
+            return;
+        }
+
+        if (!double.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.InvariantCulture, out valorPorQuilo) || valorPorQuilo <= 0)
+        {
+            Console.WriteLine("Valor do frete por quilo inválido. Insira um valor positivo.");
+            return;
+        }
+
+        double total = peso * valorPorQuilo;
+        Console.WriteLine(total.ToString("F2", CultureInfo.InvariantCulture));
+    }
+}
