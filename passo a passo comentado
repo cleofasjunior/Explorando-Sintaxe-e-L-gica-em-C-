@@ -1,0 +1,31 @@
+using System;
+using System.Globalization;
+
+class Program
+{
+    static void Main()
+    {
+    
+        double peso, valorPorQuilo;
+
+        // Passo 1: Lê o peso em quilos do usuário e valida se é um número positivo
+        if (!double.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.InvariantCulture, out peso) || peso <= 0)
+        {
+            Console.WriteLine("Peso inválido. Insira um valor positivo.");
+            return;
+        }
+
+        // Passo 2: Lê o valor do frete por quilo do usuário e valida se é um número positivo
+        if (!double.TryParse(Console.ReadLine(), NumberStyles.Float, CultureInfo.InvariantCulture, out valorPorQuilo) || valorPorQuilo <= 0)
+        {
+            Console.WriteLine("Valor do frete por quilo inválido. Insira um valor positivo.");
+            return;
+        }
+
+        // Passo 3: Calcula o valor total do frete multiplicando peso pelo valor por quilo
+        double total = peso * valorPorQuilo;
+
+        // Passo 4: Exibe o valor total do frete com duas casas decimais, usando formatação segura
+        Console.WriteLine(total.ToString("F2", CultureInfo.InvariantCulture));
+    }
+}
